@@ -6,7 +6,7 @@ const cadastroPlayer = async (req, res) => {
     if (!namePlayer) {
         return res.status(400).json({ message: 'Some required fields are missing' });
     }
-    const existingPlayer = await User.findOne({ where: { email } });
+    const existingPlayer = await Player.findOne({ where: { namePlayer } });
     if (existingPlayer) return res.status(409).json({ message: 'Player already registered' });
 
     await Player.create({ namePlayer, note });

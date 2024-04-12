@@ -1,6 +1,6 @@
 const express = require('express');
 const { sequelize } = require('./models');
-const { User } = require('./models');
+const { User, Player } = require('./models');
 const { userController, playerController } = require('./controller')
 
 const app = express();
@@ -13,7 +13,7 @@ app.post('/cadastro', userController.registerUser);
 app.post('/cadastroJogador', playerController.cadastroPlayer);
 
 app.get('/teste', async (req, res) => {
-    const users = await User.findAll()
+    const users = await Player.findAll()
     res.send(users)
 })
 
