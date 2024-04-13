@@ -3,7 +3,7 @@ const sequelize = require('../config/sequelize');
 
 const Team = sequelize.define('Team', {
     nameTeam: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('TimeA', 'TimeB', 'TimeC', 'TimeD'),
         allowNull: false,
         unique: true
     },
