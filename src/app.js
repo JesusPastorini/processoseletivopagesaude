@@ -10,9 +10,10 @@ app.use(express.json());
 
 
 app.get('/login', userController.login);
-app.get('/home', teamController.teamPlayers)
+app.get('/home', teamController.teamPlayers);
+app.put('/home/team',)
 
-app.post('/cadastro', userPermission, userController.registerUser);
+app.post('/cadastroUser', userPermission, userController.registerUser);
 app.post('/cadastroJogador', playerController.cadastroPlayer);
 
 app.get('/teste', async (req, res) => {

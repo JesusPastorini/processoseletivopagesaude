@@ -4,7 +4,7 @@ const Team = require('./teams');
 const Player = require('./player');
 const User = require('./users');
 
-Team.hasMany(Player, { as: 'players' });
+Team.hasMany(Player, { as: 'players', foreignKey: 'teamId' });
 
 const db = {
     Team,
