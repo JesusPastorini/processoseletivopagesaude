@@ -35,7 +35,7 @@ async function prepopulateUserTable() {
         if (count === 0) {
             await User.bulkCreate([
                 { username: 'user1', email: 'user1@example.com', password: 'password1', role: 'admin' },
-                { username: 'user2', email: 'user2@example.com', password: 'password2' },
+                { username: 'user2', email: 'user2@example.com', password: 'password2', role: 'user' },
             ]);
             console.log('Tabela user pré-populada com sucesso.');
         } else {
