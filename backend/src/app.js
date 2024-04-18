@@ -1,14 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const { User, Player, Team, sequelize } = require('./models');
 const { userController, playerController, teamController } = require('./controller')
 const { userPermission } = require('./middleware/userPermission')
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
 
-app.get('/login', userController.login);
+app.post('/', userController.login);
 app.get('/home', teamController.teamPlayers);
 app.put('/home/team', teamController.createTeam);
 
