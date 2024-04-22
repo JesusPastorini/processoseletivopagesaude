@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { getLogin } from '../services/loginService'
+
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -21,22 +22,11 @@ function Login() {
         return validPass;
     };
 
-    const handleClick = async () => {
+    const handleClick = () => {
         localStorage.setItem('user', JSON.stringify({
             email,
         }));
-        try {
-            const response = await axios.post('http://localhost:3000/', {
-                email,
-                password
-            });
-            // Se a solicitação for bem-sucedida, redirecione o usuário ou faça qualquer outra ação necessária
-            console.log('gogogogogogog')
-            navigate("/");
-        } catch (error) {
-            // Se ocorrer um erro, você pode exibir uma mensagem de erro para o usuário
-            console.error('Erro ao fazer login:', error);
-        }
+        getLogin(email, password, navigate);
     };
 
     return (
