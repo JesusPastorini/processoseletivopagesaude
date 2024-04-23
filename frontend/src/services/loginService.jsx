@@ -7,7 +7,6 @@ const getLogin = async (email, password, navigate) => {
             email,
             password
         });
-        console.log('gogogogogogog')
         navigate("/home");
     } catch (error) {
         console.error('Senha ou Email invalidos:', error);

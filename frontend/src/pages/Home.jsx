@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PlayerInput from '../components/teams/PlayerInput';
 import TeamSelect from '../components/teams/TeamSelect';
 import PositionSelect from '../components/teams/PositionSelect';
+import { getAllPlayers } from '../services/ListPlayerService';
 
 function App() {
-    const [playerName, setPlayerName] = useState('');
+    const [playerName, setPlayerName] = useState([]);
     const [selectedTeam, setSelectedTeam] = useState('');
     const [selectedPosition, setSelectedPosition] = useState('');
 
@@ -22,8 +23,8 @@ function App() {
 
     return (
         <div>
-            <PlayerInput options={playerName} onChange={(value) => console.log(value)} />
-            <TeamSelect onChange={setSelectedTeam} />
+            <PlayerInput options={playerName} onChange={value => value} />
+            <TeamSelect options={selectedTeam} onChange={value => value} />
             <PositionSelect onChange={setSelectedPosition} />
             <button onClick={handleAddToTeam}>OK</button>
         </div>
