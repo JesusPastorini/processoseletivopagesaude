@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.post('/', userController.login);
 app.get('/home', teamController.teamPlayers);
-app.put('/home/team', teamController.createTeam);
+app.put('/team', teamController.createTeam);
 
 app.post('/cadastroUser', userPermission, userController.registerUser);
 app.post('/cadastroJogador', playerController.cadastroPlayer);

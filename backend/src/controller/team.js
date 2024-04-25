@@ -18,26 +18,28 @@ const teamPlayers = async (req, res) => {
 }
 
 const createTeam = async (req, res) => {
-    const teamsData = req.body; // Recebe a lista de times com seus jogadores
+    //const { playerId } = req.params;
+    const { nameTeam, average } = req.body;
+    //console.log(playerId);
+    console.log(nameTeam);
 
-    try {
-        // Adiciona cada jogador aos times fixos
-        const createdPlayers = await Promise.all(teamsData.flatMap(async (teamData) => {
-            const { teamName, players } = teamData;
+    // Verifica se o time já existe, se não, cria um novo
 
-            // Adiciona cada jogador ao time
-            return Promise.all(players.map(async (playerName) => {
-                // Cria um novo jogador associado ao time
-                const player = await Player.create({ namePlayer: playerName, teamName: teamName });
-                return player;
-            }));
-        }));
+    const team = await Team.create({ nameTeam, average }); // Cria um novo time
 
-        res.json(createdPlayers);
-    } catch (error) {
-        console.error('Erro ao adicionar times:', error);
-    }
-}
+
+    // Verifica se o jogador existe
+    //const player = await Player.findByPk(playerId);
+    //if (!player) {
+    //    return res.status(404).json({ error: 'Jogador não encontrado' });
+    //}
+
+    // Atribui o ID do time ao jogador e salva
+    //player.teamId = team.id;
+    //await player.save();
+
+    res.json({ message: 'Jogador vinculado ao time com sucesso' });
+};
 
 module.exports = {
     teamPlayers,
