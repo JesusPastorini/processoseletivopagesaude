@@ -18,27 +18,32 @@ const teamPlayers = async (req, res) => {
 }
 
 const createTeam = async (req, res) => {
-    //const { playerId } = req.params;
-    const { nameTeam, average } = req.body;
-    //console.log(playerId);
-    console.log(nameTeam);
+    const { playerId } = req.params;
+    const { nameTeam, position } = req.body;
+    try {
+        // Verifica se o time já existe, se não, cria um novo
+        let team = await Team.findOne({ where: { nameTeam }, include: ['players'] });
+        if (!team) {
+            team = await Team.create({ nameTeam, average: 0 });
+        }
 
-    // Verifica se o time já existe, se não, cria um novo
+        const player = await Player.findByPk(playerId);
+        player.position = position;
+        player.teamId = team.id;
+        await player.save();
 
-    const team = await Team.create({ nameTeam, average }); // Cria um novo time
+        // Recalcula a média do time após adicionar um jogador
+        const totalNotes = team.players.reduce((acc, p) => acc + (p.note || 0), 0);
+        const average = totalNotes / team.players.length;
 
+        team.average = average;
+        await team.save();
 
-    // Verifica se o jogador existe
-    //const player = await Player.findByPk(playerId);
-    //if (!player) {
-    //    return res.status(404).json({ error: 'Jogador não encontrado' });
-    //}
-
-    // Atribui o ID do time ao jogador e salva
-    //player.teamId = team.id;
-    //await player.save();
-
-    res.json({ message: 'Jogador vinculado ao time com sucesso' });
+        res.json({ message: 'Jogador vinculado ao time com sucesso' });
+    } catch (error) {
+        console.error('Erro ao vincular jogador ao time:', error.message);
+        res.status(500).json({ error: 'Erro ao atualizar jogador' });
+    }
 };
 
 module.exports = {

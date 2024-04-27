@@ -3,12 +3,12 @@ const sequelize = require('../config/sequelize');
 
 const Team = sequelize.define('Team', {
     nameTeam: {
-        type: DataTypes.ENUM('TimeA', 'TimeB', 'TimeC', 'TimeD'),
+        type: DataTypes.ENUM('Santos', 'Internacional', 'Gremio', 'Flamengo'),
         allowNull: false,
         unique: true
     },
     average: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.FLOAT,
         allowNull: false,
     },
 }, {
