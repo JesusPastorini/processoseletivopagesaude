@@ -1,15 +1,17 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000/';
-
-const getAllPlayers = async () => {
+const addPlayerTeam = async (playerId, nameTeam, position) => {
+    console.log(playerId)
+    console.log(nameTeam)
     try {
-        const response = await axios.get(baseURL);
-        return response.data;
+        const response = await axios.put(`http://localhost:3000/team/${playerId}`, {
+            nameTeam,
+            position,
+        });
     } catch (error) {
-        console.error('Erro ao buscar jogadores:', error);
-        return [];
+        console.error('erro na service:', error);
     }
+
 };
 
-export { getAllPlayers };
+export default addPlayerTeam;

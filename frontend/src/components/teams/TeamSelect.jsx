@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TeamSelect({ onChange }) {
-    const teams = ['Time A', 'Time B', 'Time C', 'Time D'];
+    const teams = ['Santos', 'Internacional', 'Gremio', 'Flamengo'];
 
     return (
         <label>
