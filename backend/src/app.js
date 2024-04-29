@@ -14,7 +14,7 @@ app.post('/', userController.login);
 app.get('/home', teamController.teamPlayers);
 app.put('/team/:playerId', teamController.createTeam);
 
-app.post('/cadastroUser', userPermission, userController.registerUser);
+app.post('/registration', userController.registerUser);
 app.post('/cadastroJogador', playerController.cadastroPlayer);
 
 app.get('/TodosUsuarios', async (req, res) => {

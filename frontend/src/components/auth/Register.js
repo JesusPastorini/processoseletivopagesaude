@@ -1,10 +1,8 @@
-// Função para validar um endereço de e-mail
 const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
-// Função para validar os dados de registro
 const validateRegistration = (username, email, password) => {
     const errors = {};
 

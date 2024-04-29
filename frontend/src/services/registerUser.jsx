@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-// Alterei o nome da função para "registerUser" para refletir sua finalidade
 const registerUser = async (username, email, password) => {
     try {
-        const response = await axios.post('http://localhost:3000/cadastroUser', {
+        const response = await axios.post('http://localhost:3000/registration', {
             username,
             email,
             password,
         });
-        return response.data; // Retorne os dados do usuário registrado para permitir uso no componente
+        return response.data;
     } catch (error) {
         throw error.response ? error.response.data.message : 'Erro ao registrar usuário';
     }

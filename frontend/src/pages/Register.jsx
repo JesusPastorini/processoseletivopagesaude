@@ -10,16 +10,15 @@ const Register = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleRegister = async () => {
-        // Use a função validateRegistration para obter erros
         const newErrors = validateRegistration(username, email, password);
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors); // Se houver erros, defina-os no estado
-            return; // Pare a execução para evitar a tentativa de cadastro com dados inválidos
+            return; // Para a execução para evitar a tentativa de cadastro com dados inválidos
         }
 
         try {
-            const user = await registerUser(username, email, password); // Use o serviço de cadastro
+            const user = await registerUser(username, email, password);
 
             // Se o cadastro for bem-sucedido, atualize o estado para indicar sucesso e limpe os campos
             setSuccessMessage(`Usuário ${user.username} cadastrado com sucesso!`);
