@@ -1,10 +1,9 @@
 import axios from 'axios';
 
+const baseURL = 'http://localhost:3000';
 const addPlayerTeam = async (playerId, nameTeam, position) => {
-    console.log(playerId)
-    console.log(nameTeam)
     try {
-        const response = await axios.put(`http://localhost:3000/team/${playerId}`, {
+        const response = await axios.put(`${baseURL}/team/${playerId}`, {
             nameTeam,
             position,
         });
@@ -13,5 +12,15 @@ const addPlayerTeam = async (playerId, nameTeam, position) => {
     }
 
 };
-
 export default addPlayerTeam;
+const getAllTeamsWithPlayers = async () => {
+    try {
+        const response = await axios.get(`${baseURL}/home`);
+        return response.data.teamsWithPlayersFiltered;
+    } catch (error) {
+        console.error('Erro ao buscar times com jogadores:', error);
+        return [];
+    }
+};
+
+export { getAllTeamsWithPlayers };
