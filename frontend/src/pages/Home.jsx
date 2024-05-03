@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PlayerInput from '../components/teams/PlayerInput';
 import TeamSelect from '../components/teams/TeamSelect';
 import PositionSelect from '../components/teams/PositionSelect';
 import { getAllPlayers } from '../services/ListPlayerService';
 import addPlayerTeam from '../services/teamService';
 import { getAllTeamsWithPlayers } from '../services/teamService';
+import '../components/auth/PrivateRoute'; // HTTP para validação do token
 
 function App() {
     const [teams, setTeams] = useState([]);
@@ -13,15 +15,23 @@ function App() {
     const [selectedPosition, setSelectedPosition] = useState('');
     const [selectedPlayerId, setSelectedPlayerId] = useState(null);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
-        const fetchPlayers = async () => {
-            const playersData = await getAllPlayers();
-            const teamsData = await getAllTeamsWithPlayers();
-            setPlayerName(playersData);
-            setTeams(teamsData);
-        }
-        fetchPlayers();
-    }, []);
+        const fetchPlayersAndTeams = async () => {
+            const token = sessionStorage.getItem('authToken'); // Verifica se o usuário está autenticado
+            if (!token) {
+                navigate('/');
+            } else {
+                const playersData = await getAllPlayers();
+                const teamsData = await getAllTeamsWithPlayers();
+                setPlayerName(playersData);
+                setTeams(teamsData);
+            }
+        };
+
+        fetchPlayersAndTeams();
+    }, [navigate]);
 
     const handleAddToTeam = async () => {
         await addPlayerTeam(selectedPlayerId, selectedTeam, selectedPosition);
