@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import { getLogin } from '../services/loginService'
 
 
@@ -7,8 +6,6 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isDisabled, setDisabled] = useState(true);
-
-    let navigate = useNavigate();
 
     const isValidEmail = (testEmail) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,11 +19,11 @@ function Login() {
         return validPass;
     };
 
-    const handleClick = () => {
+    const handleClick = async () => {
         localStorage.setItem('user', JSON.stringify({
             email,
         }));
-        getLogin(email, password, navigate);
+        await getLogin(email, password);
     };
 
     return (
