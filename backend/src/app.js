@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { User, Player, Team, sequelize } = require('./models');
-const { userController, playerController, teamController } = require('./controller')
+const { userController, playerController, teamController, createContact } = require('./controller')
 const { checkRole } = require('./middleware/validationJWT')
 
 const app = express();
@@ -16,6 +16,8 @@ app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTe
 
 app.post('/registration', checkRole(['admin']), userController.registerUser);
 app.post('/cadastroJogador', checkRole(['user', 'admin']), playerController.cadastroPlayer);
+
+app.post('/contact', createContact);
 
 app.get('/TodosUsuarios', async (req, res) => {
     const users = await User.findAll()
