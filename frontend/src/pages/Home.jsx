@@ -7,6 +7,7 @@ import { getAllPlayers } from '../services/ListPlayerService';
 import addPlayerTeam from '../services/teamService';
 import { getAllTeamsWithPlayers } from '../services/teamService';
 import '../components/auth/PrivateRoute'; // HTTP para validação do token
+import Navbar from '../components/common/Navbar';
 
 function App() {
     const [teams, setTeams] = useState([]);
@@ -41,6 +42,7 @@ function App() {
 
     return (
         <div>
+            <Navbar />
             <PlayerInput options={playerName} onChange={(selectedPlayerId) => {
                 setSelectedPlayerId(selectedPlayerId)
             }} />

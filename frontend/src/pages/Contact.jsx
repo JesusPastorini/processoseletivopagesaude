@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/common/Navbar';
 
 const Contact = () => {
     const [name, setName] = useState('');
@@ -34,6 +35,7 @@ const Contact = () => {
 
     return (
         <div>
+            <Navbar />
             <h2>Contato</h2>
             {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import registerUser from '../services/registerUser';
 import { validateRegistration } from '../components/auth/Register';
+import Navbar from '../components/common/Navbar';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -33,6 +34,7 @@ const Register = () => {
 
     return (
         <div>
+            <Navbar />
             <h2>Registrar Usuário</h2>
             <div>
                 <label>
