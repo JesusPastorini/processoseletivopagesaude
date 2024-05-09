@@ -8,6 +8,7 @@ import addPlayerTeam from '../services/teamService';
 import { getAllTeamsWithPlayers } from '../services/teamService';
 import '../components/auth/PrivateRoute'; // HTTP para validação do token
 import Navbar from '../components/common/Navbar';
+import Footer from '../components/common/Footer';
 
 function App() {
     const [teams, setTeams] = useState([]);
@@ -69,6 +70,7 @@ function App() {
                     </li>
                 ))}
             </ul>
+            <Footer />
         </div>
     );
 }

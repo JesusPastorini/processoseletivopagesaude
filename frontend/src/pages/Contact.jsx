@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/common/Navbar';
+import Footer from '../components/common/Footer';
 
 const Contact = () => {
     const [name, setName] = useState('');
@@ -75,6 +76,7 @@ const Contact = () => {
             <p>Email: contato@exemplo.com</p>
             <p>Telefone: (123) 456-7890</p>
             <p>Endereço: Rua Exemplo, 123, Cidade, País</p>
+            <Footer />
         </div>
     );
 };

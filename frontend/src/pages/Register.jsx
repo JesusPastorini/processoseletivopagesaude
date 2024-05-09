@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import registerUser from '../services/registerUser';
 import { validateRegistration } from '../components/auth/Register';
 import Navbar from '../components/common/Navbar';
+import Footer from '../components/common/Footer';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -72,6 +73,7 @@ const Register = () => {
             {errors.general && <div style={{ color: 'red' }}>{errors.general}</div>}
             {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
             <button onClick={handleRegister}>Registrar</button>
+            <Footer />
         </div>
     );
 };
