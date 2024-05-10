@@ -1,45 +1,100 @@
+.login-background {
+    background-image: url('/estadio.png');
+    background-size: cover;
+    /* Faz a imagem cobrir toda a área */
+    background-repeat: no-repeat;
+    /* Evita repetição */
+    background-position: center;
+    /* Centraliza a imagem */
+    height: 100vh;
+    /* Cobre toda a altura da tela */
+    display: flex;
+    /* Permite centralizar o formulário */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+}
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f0f0f0;
+
 }
 
 .login-form {
-    background: white;
-    padding: 80px;
+    background: rgb(228, 228, 236);
+
+    padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .login-icon {
+    color: black;
     margin-bottom: 10px;
+    font-size: 40px;
 }
 
 .login-inputs {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
-.login-inputs input {
-    padding: 10px;
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    font-size: 23px;
+    left: 20px;
+
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 20px 70px 15px 60px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+.container-checkbox {
+    display: flex;
+    justify-content: space-between;
+    /* Deixa um elemento à esquerda e o outro à direita */
+    align-items: center;
+    /* Para centralizar verticalmente */
+    margin: 5%;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-password {
+    text-align: right;
+    /* Garante que o texto fique alinhado à direita */
+}
+
 button {
-    padding: 10px 20px;
+    padding: 15px 150px;
+    margin-top: 5%;
     border: none;
-    background: #4CAF50;
+    background: #2b962e;
     color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:disabled {
-    background: #aaa;
+    background: #3f9451;
     cursor: not-allowed;
 }

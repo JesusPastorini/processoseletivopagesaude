@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { getLogin } from '../services/loginService';
-import { FontAwesomeIcon, faEnvelope, faLock } from '@fortawesome/react-fontawesome';
-import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFutbol, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import '../components/styles/Login.css';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isDisabled, setDisabled] = useState(true);
+    const [rememberMe, setRememberMe] = useState(false);
 
     const isValidEmail = (testEmail) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,46 +27,67 @@ function Login() {
             email,
         }));
         await getLogin(email, password);
+        if (rememberMe) {
+            localStorage.setItem('authToken', sessionStorage.getItem('authToken'));
+        }
     };
 
     return (
-        <main className="login-container">
-            <div className="login-form">
-                <div className="login-icon">
-                    <FontAwesomeIcon icon={faFutbol} size="2x" />
-                </div>
-                <h2>Login</h2>
-                <div className="login-inputs">
-                    <div className="input-wrapper">
-                        <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
-                        <input
-                            value={email}
-                            type="email"
-                            placeholder="Insira seu email"
-                            onChange={(e) => {
-                                setEmail(e.target.value);
-                                setDisabled(!isValidEmail(e.target.value) || !isValidPassword(password));
-                            }}
-                        />
+        <div className="login-background">
+            <main className="login-container">
+                <div className="login-form">
+                    <div className="login-icon">
+                        <FontAwesomeIcon icon={faFutbol} size="2x" />
                     </div>
-                    <div className="input-wrapper">
-                        <FontAwesomeIcon icon={faLock} className="input-icon" />
-                        <input
-                            value={password}
-                            type="password"
-                            placeholder="Insira sua senha"
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                                setDisabled(!isValidEmail(email) || !isValidPassword(e.target.value));
-                            }}
-                        />
+                    <h2>Login</h2>
+                    <div className="login-inputs">
+                        <div className="input-wrapper">
+                            <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
+                            <input
+                                value={email}
+                                name="email"
+                                type="email"
+                                autoComplete="off"
+                                placeholder="E-mail"
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setDisabled(!isValidEmail(e.target.value) || !isValidPassword(password));
+                                }}
+                            />
+                        </div>
+                        <div className="input-wrapper">
+                            <FontAwesomeIcon icon={faLock} className="input-icon" />
+                            <input
+                                value={password}
+                                name="password"
+                                type="password"
+                                placeholder="*********"
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setDisabled(!isValidEmail(email) || !isValidPassword(e.target.value));
+                                }}
+                            />
+                        </div>
                     </div>
+                    <div className="container-checkbox">
+                        <div className="checkbox">
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                            />
+                            <label htmlFor="rememberMe">Lembrar-me</label>
+                        </div>
+                        <div className="forgot-password">
+                            <Link to="/forgot-password">Esqueceu sua senha?</Link>
+                        </div>
+                    </div>
+                    <button onClick={handleClick} disabled={isDisabled}>
+                        Entrar
+                    </button>
                 </div>
-                <button onClick={handleClick} disabled={isDisabled}>
-                    Entrar
-                </button>
-            </div>
-        </main>
+            </main>
+        </div>
     );
 }
 
