@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { getLogin } from '../services/loginService'
-
+import { getLogin } from '../services/loginService';
+import { FontAwesomeIcon, faEnvelope, faLock } from '@fortawesome/react-fontawesome';
+import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+import '../components/styles/Login.css';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -9,8 +11,7 @@ function Login() {
 
     const isValidEmail = (testEmail) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const validMail = emailRegex.test(testEmail);
-        return validMail;
+        return emailRegex.test(testEmail);
     };
 
     const isValidPassword = (testPassword) => {
@@ -27,50 +28,41 @@ function Login() {
     };
 
     return (
-        <main>
-            <div className="container__login">
-                <div className="form__login">
-                    <label htmlFor="email">
-                        <span>Login</span>
+        <main className="login-container">
+            <div className="login-form">
+                <div className="login-icon">
+                    <FontAwesomeIcon icon={faFutbol} size="2x" />
+                </div>
+                <h2>Login</h2>
+                <div className="login-inputs">
+                    <div className="input-wrapper">
+                        <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
                         <input
                             value={email}
-                            name="email"
                             type="email"
-                            autoComplete="off"
                             placeholder="Insira seu email"
-                            data-testid="email-input"
-                            onChange={({ target }) => {
-                                const { value } = target;
-                                setEmail(value);
-                                setDisabled(!(isValidEmail(value) && isValidPassword(password)));
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                setDisabled(!isValidEmail(e.target.value) || !isValidPassword(password));
                             }}
                         />
-                    </label>
-                    <label htmlFor="password">
-                        <span>Password</span>
+                    </div>
+                    <div className="input-wrapper">
+                        <FontAwesomeIcon icon={faLock} className="input-icon" />
                         <input
                             value={password}
-                            name="password"
                             type="password"
                             placeholder="Insira sua senha"
-                            data-testid="password-input"
-                            minLength={6}
-                            onChange={({ target }) => {
-                                const { value } = target;
-                                setPassword(value);
-                                setDisabled(!(isValidEmail(email) && isValidPassword(value)));
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                setDisabled(!isValidEmail(email) || !isValidPassword(e.target.value));
                             }}
                         />
-                    </label>
-                    <button
-                        data-testid="login-submit-btn"
-                        type="button"
-                        onClick={handleClick}
-                        disabled={isDisabled}
-                    >
-                        Entrar
-                    </button>
+                    </div>
                 </div>
+                <button onClick={handleClick} disabled={isDisabled}>
+                    Entrar
+                </button>
             </div>
         </main>
     );
