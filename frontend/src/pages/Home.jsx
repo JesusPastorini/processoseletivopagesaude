@@ -9,6 +9,7 @@ import { getAllTeamsWithPlayers } from '../services/teamService';
 import '../components/auth/PrivateRoute'; // HTTP para validação do token
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
+import Field from '../components/teams/Field';
 
 function App() {
     const [teams, setTeams] = useState([]);
@@ -54,22 +55,7 @@ function App() {
                 setSelectedPosition(selectedPosition)
             }} />
             <button onClick={handleAddToTeam}>OK</button>
-            {/* Exibe a lista de times com suas notas e jogadores */}
-            <h2>Times e Jogadores</h2>
-            <ul>
-                {teams.map((team) => (
-                    <li key={team.id}>
-                        <h3>{team.nameTeam} - Nota: {team.average}</h3>
-                        <ul>
-                            {team.players.map((player) => (
-                                <li key={player.id}>
-                                    {player.namePlayer} - {player.position || 'Sem posição'}
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+            <Field teams={teams} />
             <Footer />
         </div>
     );
