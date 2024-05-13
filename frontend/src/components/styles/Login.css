@@ -84,7 +84,7 @@
     /* Garante que o texto fique alinhado à direita */
 }
 
-button {
+.btn-login {
     padding: 15px 150px;
     margin-top: 5%;
     border: none;

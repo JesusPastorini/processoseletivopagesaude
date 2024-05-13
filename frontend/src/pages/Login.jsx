@@ -82,7 +82,7 @@ function Login() {
                             <Link to="/forgot-password">Esqueceu sua senha?</Link>
                         </div>
                     </div>
-                    <button onClick={handleClick} disabled={isDisabled}>
+                    <button className="btn-login" onClick={handleClick} disabled={isDisabled}>
                         Entrar
                     </button>
                 </div>

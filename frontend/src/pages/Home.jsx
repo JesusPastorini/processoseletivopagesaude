@@ -10,6 +10,7 @@ import '../components/auth/PrivateRoute'; // HTTP para validação do token
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import Field from '../components/teams/Field';
+import '../components/styles/Home.css';
 
 function App() {
     const [teams, setTeams] = useState([]);
@@ -45,16 +46,18 @@ function App() {
     return (
         <div>
             <Navbar />
-            <PlayerInput options={playerName} onChange={(selectedPlayerId) => {
-                setSelectedPlayerId(selectedPlayerId)
-            }} />
-            <TeamSelect onChange={(selectedTeam) => {
-                setSelectedTeam(selectedTeam)
-            }} />
-            <PositionSelect onChange={(selectedPosition) => {
-                setSelectedPosition(selectedPosition)
-            }} />
-            <button onClick={handleAddToTeam}>OK</button>
+            <div className="player-input">
+                <PlayerInput options={playerName} onChange={(selectedPlayerId) => {
+                    setSelectedPlayerId(selectedPlayerId)
+                }} />
+                <TeamSelect onChange={(selectedTeam) => {
+                    setSelectedTeam(selectedTeam)
+                }} />
+                <PositionSelect onChange={(selectedPosition) => {
+                    setSelectedPosition(selectedPosition)
+                }} />
+                <button className="btn-home" onClick={handleAddToTeam}>Escalado</button>
+            </div>
             <Field teams={teams} />
             <Footer />
         </div>

@@ -2,21 +2,24 @@ import React from 'react';
 
 function PositionSelect({ onChange }) {
     const positions = [
-        'Todas',
         'Goleiro',
-        'Zagueiro',
-        'Meia',
-        'Atacante',
-        'Lateral-direito',
-        'Lateral-esquerdo',
-        'Volante',
-        // ... outras posições
+        'Zagueiro-Direito',
+        'Zagueiro-central-esquerda',
+        'Zagueiro-central-direita',
+        'Zagueiro-esquerdo',
+        'Meia-direito',
+        'Meia-central-direito',
+        'Meia-central-esquerdo',
+        'Meia-esquerdo',
+        'Atacante-direito',
+        'Atacante-esquerdo',
     ];
 
     return (
         <label>
             Posição
             <select onChange={(e) => onChange(e.target.value)}>
+                <option value="">Selecione uma Posição</option>
                 {positions.map((position) => (
                     <option key={position} value={position}>
                         {position}
