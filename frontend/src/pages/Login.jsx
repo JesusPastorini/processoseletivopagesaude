@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { getLogin } from '../services/loginService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFutbol, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { GiSoccerBall } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 import '../components/styles/Login.css';
 
@@ -36,10 +37,7 @@ function Login() {
         <div className="login-background">
             <main className="login-container">
                 <div className="login-form">
-                    <div className="login-icon">
-                        <FontAwesomeIcon icon={faFutbol} size="2x" />
-                    </div>
-                    <h2>Login</h2>
+                    <GiSoccerBall className="login-icon" />
                     <div className="login-inputs">
                         <div className="input-wrapper">
                             <FontAwesomeIcon icon={faEnvelope} className="input-icon" />

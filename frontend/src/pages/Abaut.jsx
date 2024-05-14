@@ -17,7 +17,7 @@ function AboutPage() {
                 <strong>2. Escopo e Objetivos:</strong> O escopo deste projeto abrange a criação de um aplicativo web completo, desde a configuração do servidor até a interface do usuário. Meus objetivos são aprofundar meus conhecimentos em linguagens de programação, frameworks e ferramentas, desenvolver habilidades de resolução de problemas e tomada de decisões, e criar algo funcional e útil, mesmo que seja apenas para mim.
             </p>
             <p>
-                <strong>3. Tecnologias Utilizadas:</strong> No back-end, estou explorando linguagens como Python, Node.js ou Ruby, dependendo do contexto do projeto. Para o front-end, estou trabalhando com HTML, CSS e JavaScript, além de frameworks como React, Angular ou Vue.js. Também estou experimentando bancos de dados relacionais e não relacionais.
+                <strong>3. Tecnologias Utilizadas:</strong> No back-end, estou explorando linguagens como Node.js ou Ruby, dependendo do contexto do projeto. Para o front-end, estou trabalhando com HTML, CSS e JavaScript, além de frameworks como React, Angular ou Vue.js. Também estou experimentando bancos de dados relacionais e não relacionais.
             </p>
             <p>
                 <strong>4. Desafios Enfrentados:</strong> Como estou fazendo tudo sozinho, enfrento desafios diários. Desde depurar erros de sintaxe até projetar uma interface amigável, cada etapa é uma oportunidade de aprendizado. A falta de colegas de equipe significa que sou responsável por todas as decisões, o que pode ser assustador, mas também empoderador.

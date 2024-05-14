@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PositionSelect({ onChange }) {
+function PositionSelect({ onChange, value }) {
     const positions = [
         'Goleiro',
         'Zagueiro-Direito',
@@ -18,7 +18,7 @@ function PositionSelect({ onChange }) {
     return (
         <label>
             Posição
-            <select onChange={(e) => onChange(e.target.value)}>
+            <select onChange={(e) => onChange(e.target.value)} value={value}>
                 <option value="">Selecione uma Posição</option>
                 {positions.map((position) => (
                     <option key={position} value={position}>

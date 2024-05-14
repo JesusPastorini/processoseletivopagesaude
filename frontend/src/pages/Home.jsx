@@ -41,21 +41,28 @@ function App() {
         await addPlayerTeam(selectedPlayerId, selectedTeam, selectedPosition);
         const teamsData = await getAllTeamsWithPlayers();
         setTeams(teamsData); // Atualiza a lista de times
+        setSelectedPlayerId('');
+        setSelectedTeam('');
+        setSelectedPosition('');
     };
 
     return (
         <div>
             <Navbar />
             <div className="player-input">
-                <PlayerInput options={playerName} onChange={(selectedPlayerId) => {
-                    setSelectedPlayerId(selectedPlayerId)
-                }} />
-                <TeamSelect onChange={(selectedTeam) => {
-                    setSelectedTeam(selectedTeam)
-                }} />
-                <PositionSelect onChange={(selectedPosition) => {
-                    setSelectedPosition(selectedPosition)
-                }} />
+                <PlayerInput
+                    options={playerName}
+                    onChange={setSelectedPlayerId}
+                    value={selectedPlayerId}
+                />
+                <TeamSelect
+                    onChange={setSelectedTeam}
+                    value={selectedTeam}
+                />
+                <PositionSelect
+                    onChange={setSelectedPosition}
+                    value={selectedPosition}
+                />
                 <button className="btn-home" onClick={handleAddToTeam}>Escalado</button>
             </div>
             <Field teams={teams} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+import { PiSoccerBall } from "react-icons/pi";
 import '../styles/Navbar.css';
 
 function Navbar() {
@@ -12,9 +13,7 @@ function Navbar() {
 
     return (
         <nav className="navbar">
-            <div className="navbar-icon">
-                <FontAwesomeIcon icon={faFutbol} />
-            </div>
+            <PiSoccerBall className="navbar-icon" />
             <ul className="navbar-menu">
                 <li>
                     <Link to="/home">Home</Link>

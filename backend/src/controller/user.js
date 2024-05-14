@@ -13,7 +13,7 @@ const login = async (req, res) => {
     if (!getByUser) return res.status(401).json({ message: 'Usuário ou senha inválidos' });
 
     // Gera um token JWT com o ID e a função do usuário
-    const token = jwt.sign({ id: getByUser.id, role: getByUser.role }, secret, { expiresIn: '5h' });
+    const token = jwt.sign({ id: getByUser.id, role: getByUser.role }, secret, { expiresIn: '24h' });
 
     return res.status(200).send({ token });
 };

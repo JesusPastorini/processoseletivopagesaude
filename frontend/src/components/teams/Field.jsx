@@ -1,11 +1,15 @@
 import React from 'react';
 import '../styles/Field.css';
 import { TbShirt } from "react-icons/tb";
+import { GiTrophy } from "react-icons/gi";
 
 function Field({ teams }) {
     return (
         <div className="field-container">
-            <h3>Times e Jogadores</h3>
+            <h3 className="campeonato">
+                <GiTrophy className="foot" />
+                Campeonato
+                <GiTrophy className="foot" /></h3>
             <div className="field-wrapper">
                 {teams.map((team) => (
                     <div key={team.id} className="field-item">

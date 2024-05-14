@@ -8,15 +8,13 @@
 }
 
 .navbar-icon {
-    font-size: 1.5rem;
-    /* Tamanho do ícone */
+    font-size: 3.5rem;
 }
 
 .navbar-menu {
     list-style: none;
     display: flex;
     gap: 1rem;
-    /* Espaço entre os itens */
 }
 
 .navbar-menu li {
@@ -26,11 +24,9 @@
 .navbar-menu li a {
     text-decoration: none;
     color: white;
-    /* Cor do texto */
     transition: color 0.3s;
 }
 
 .navbar-menu li a:hover {
     color: #f0f0f0;
-    /* Cor ao passar o mouse */
 }

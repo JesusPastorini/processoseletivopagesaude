@@ -3,27 +3,25 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 350px;
+    margin-bottom: 0px;
     width: 100vw;
     height: 100%;
-
+    background-color: beige;
 }
 
 .field-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .field-item {
     width: calc(50% - 5px);
     width: 500px;
-    height: 300px;
+    height: 400px;
     margin-left: 0px;
     margin-top: 45px;
 }
-
-
 
 .field {
     width: 100%;
@@ -42,6 +40,17 @@
     display: flex;
     align-items: center;
     position: absolute;
+}
+
+.campeonato {
+    background-color: rgb(245, 245, 220);
+    border-radius: 35px;
+    font-size: 45px;
+    font-family: Arial;
+}
+
+.foot {
+    font-size: 55px;
 }
 
 .player-position {
@@ -74,13 +83,13 @@
 
 .Zagueiro-central-direita {
     color: rgb(235, 252, 0);
-    margin-top: 95px;
+    margin-top: 175px;
     margin-left: 75px;
 }
 
 .Zagueiro-central-esquerda {
     color: rgb(235, 252, 0);
-    margin-top: 175px;
+    margin-top: 95px;
     margin-left: 75px;
 }
 

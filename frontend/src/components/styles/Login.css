@@ -36,7 +36,7 @@
 .login-icon {
     color: black;
     margin-bottom: 10px;
-    font-size: 40px;
+    font-size: 100px;
 }
 
 .login-inputs {
@@ -70,7 +70,6 @@
     justify-content: space-between;
     /* Deixa um elemento à esquerda e o outro à direita */
     align-items: center;
-    /* Para centralizar verticalmente */
     margin: 5%;
 }
 
@@ -81,7 +80,6 @@
 
 .forgot-password {
     text-align: right;
-    /* Garante que o texto fique alinhado à direita */
 }
 
 .btn-login {
