@@ -18,7 +18,7 @@ function PositionSelect({ onChange, value }) {
     return (
         <label>
             Posição
-            <select onChange={(e) => onChange(e.target.value)} value={value}>
+            <select onChange={(e) => onChange(e.target.value)} value={value || ''}>
                 <option value="">Selecione uma Posição</option>
                 {positions.map((position) => (
                     <option key={position} value={position}>

@@ -3,6 +3,7 @@ import registerUser from '../services/registerUser';
 import { validateRegistration } from '../components/auth/Register';
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
+import '../components/styles/Register.css';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -36,43 +37,47 @@ const Register = () => {
     return (
         <div>
             <Navbar />
-            <h2>Registrar Usuário</h2>
-            <div>
-                <label>
-                    Nome de Usuário:
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
-                {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
+            <div className="register-container">
+                <div className="register-form">
+                    <h2>Registrar Usuário</h2>
+                    <div>
+                        <label>
+                            Nome de Usuário:
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </label>
+                        {errors.username && <div className="error-message">{errors.username}</div>}
+                    </div>
+                    <div>
+                        <label>
+                            E-mail:
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </label>
+                        {errors.email && <div className="error-message">{errors.email}</div>}
+                    </div>
+                    <div>
+                        <label>
+                            Senha:
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </label>
+                        {errors.password && <div className="error-message">{errors.password}</div>}
+                    </div>
+                    {errors.general && <div className="error-message">{errors.general}</div>}
+                    {successMessage && <div className="success-message">{successMessage}</div>}
+                    <button onClick={handleRegister}>Registrar</button>
+                </div>
             </div>
-            <div>
-                <label>
-                    E-mail:
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-                {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
-            </div>
-            <div>
-                <label>
-                    Senha:
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
-            </div>
-            {errors.general && <div style={{ color: 'red' }}>{errors.general}</div>}
-            {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>}
-            <button onClick={handleRegister}>Registrar</button>
             <Footer />
         </div>
     );

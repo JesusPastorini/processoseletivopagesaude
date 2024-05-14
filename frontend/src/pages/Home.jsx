@@ -53,18 +53,18 @@ function App() {
                 <PlayerInput
                     options={playerName}
                     onChange={setSelectedPlayerId}
-                    value={selectedPlayerId}
+                    value={selectedPlayerId || ''}
                 />
                 <TeamSelect
                     onChange={setSelectedTeam}
-                    value={selectedTeam}
+                    value={selectedTeam || ''}
                 />
                 <PositionSelect
                     onChange={setSelectedPosition}
-                    value={selectedPosition}
+                    value={selectedPosition || ''}
                 />
                 <button className="btn-home" onClick={handleAddToTeam}>Escalado</button>
-            </div>
+            </div><s></s>
             <Field teams={teams} />
             <Footer />
         </div>
