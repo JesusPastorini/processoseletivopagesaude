@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+import { jwtDecode } from "jwt-decode";
 import { PiSoccerBall } from "react-icons/pi";
 import '../styles/Navbar.css';
 
@@ -11,6 +10,19 @@ function Navbar() {
         window.location.reload();
     };
 
+    const isAdmin = () => {
+        const token = sessionStorage.getItem('authToken');
+        if (!token) return false;
+
+        try {
+            const decodedToken = jwtDecode(token);
+            return decodedToken.role === 'admin';
+        } catch (error) {
+            console.error('Token inválido', error);
+            return false;
+        }
+    };
+
     return (
         <nav className="navbar">
             <PiSoccerBall className="navbar-icon" />
@@ -18,9 +30,11 @@ function Navbar() {
                 <li>
                     <Link to="/home">Home</Link>
                 </li>
-                <li>
-                    <Link to="/registration">Cadastro</Link>
-                </li>
+                {isAdmin() && (
+                    <li>
+                        <Link to="/registration">Cadastro</Link>
+                    </li>
+                )}
                 <li>
                     <Link to="/contact">Contato</Link>
                 </li>

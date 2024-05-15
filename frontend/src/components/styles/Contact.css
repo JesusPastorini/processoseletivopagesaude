@@ -1,4 +1,4 @@
-.register-container {
+.contact-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,29 +8,31 @@
     padding: 20px;
 }
 
-.register-form {
+.contact-form {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    margin-bottom: 20px;
 }
 
-.register-form h2 {
+.contact-form h2 {
     margin-bottom: 20px;
     color: #333333;
     text-align: center;
 }
 
-.register-form label {
+.contact-form label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
     color: #555555;
 }
 
-.register-form input {
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -50,7 +52,7 @@
     text-align: center;
 }
 
-.register-form button {
+.contact-form button {
     width: 100%;
     padding: 10px;
     background-color: #50759c;
@@ -61,13 +63,18 @@
     font-size: 16px;
 }
 
-.register-form button:focus,
-.register-form button:active {
+.contact-form button:focus,
+.contact-form button:active {
     background-color: #0056b3;
     outline: none;
 }
 
-footer {
-    margin-top: 20px;
+.contact-info {
     text-align: center;
+    margin-top: 20px;
+    color: #555555;
+}
+
+.contact-info p {
+    margin: 5px 0;
 }

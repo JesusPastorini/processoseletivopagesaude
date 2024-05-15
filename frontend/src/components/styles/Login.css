@@ -1,19 +1,12 @@
 .login-background {
     background-image: url('/estadio.png');
     background-size: cover;
-    /* Faz a imagem cobrir toda a área */
     background-repeat: no-repeat;
-    /* Evita repetição */
     background-position: center;
-    /* Centraliza a imagem */
     height: 100vh;
-    /* Cobre toda a altura da tela */
     display: flex;
-    /* Permite centralizar o formulário */
     justify-content: center;
-    /* Centraliza horizontalmente */
     align-items: center;
-    /* Centraliza verticalmente */
 }
 
 .login-container {
@@ -66,7 +59,6 @@
 .container-checkbox {
     display: flex;
     justify-content: space-between;
-    /* Deixa um elemento à esquerda e o outro à direita */
     align-items: center;
     margin: 5%;
 }
