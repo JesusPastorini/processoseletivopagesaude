@@ -42,7 +42,7 @@ function Navbar() {
                     <Link to="/about">Sobre</Link>
                 </li>
                 <li>
-                    <button onClick={handleLogout} className="navbar-logout-button">
+                    <button onClick={handleLogout} class="btn btn-link">
                         Sair
                     </button>
                 </li>

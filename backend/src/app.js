@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { User, Player, Team, sequelize } = require('./models');
+const { Player, sequelize } = require('./models');
 const { userController, playerController, teamController, contactController } = require('./controller')
 const { checkRole } = require('./middleware/validationJWT')
 
@@ -15,19 +15,11 @@ app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
 app.post('/registration', checkRole(['admin']), userController.registerUser);
-app.post('/registrationPlayer', checkRole(['user', 'admin']), playerController.cadastroPlayer);
+app.post('/registrationPlayer', checkRole(['admin']), playerController.cadastroPlayer);
 
 app.post('/contact', contactController.createContact);
 
-app.get('/TodosUsuarios', async (req, res) => {
-    const users = await User.findAll()
-    res.send(users)
-})
-app.get('/TodosTimes', async (req, res) => {
-    const teams = await Team.findAll()
-    res.send(teams)
-})
-app.get('/players', async (req, res) => {
+app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     const player = await Player.findAll()
     res.send(player)
 })
