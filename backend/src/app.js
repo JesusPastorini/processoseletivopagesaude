@@ -15,7 +15,7 @@ app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
 app.post('/registration', checkRole(['admin']), userController.registerUser);
-app.post('/cadastroJogador', checkRole(['user', 'admin']), playerController.cadastroPlayer);
+app.post('/registrationPlayer', checkRole(['user', 'admin']), playerController.cadastroPlayer);
 
 app.post('/contact', contactController.createContact);
 
@@ -27,7 +27,7 @@ app.get('/TodosTimes', async (req, res) => {
     const teams = await Team.findAll()
     res.send(teams)
 })
-app.get('/TodosJogadores', async (req, res) => {
+app.get('/players', async (req, res) => {
     const player = await Player.findAll()
     res.send(player)
 })

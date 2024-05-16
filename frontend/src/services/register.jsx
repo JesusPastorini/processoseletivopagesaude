@@ -12,5 +12,18 @@ const registerUser = async (username, email, password) => {
         throw error.response ? error.response.data.message : 'Erro ao registrar usuário';
     }
 };
-
-export default registerUser;
+const registerPlayer = async (namePlayer, note) => {
+    try {
+        const response = await axios.post('http://localhost:3000/registrationPlayer', {
+            namePlayer,
+            note,
+        });
+        return response.data;
+    } catch (error) {
+        throw error.response ? error.response.data.message : 'Erro ao registrar usuário';
+    }
+};
+export {
+    registerUser,
+    registerPlayer,
+};
