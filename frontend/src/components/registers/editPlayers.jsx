@@ -1,4 +1,3 @@
-// src/components/registers/EditPlayer.jsx
 import React, { useState, useEffect } from 'react';
 import { getAllPlayers, updatePlayer, deletePlayer } from '../../services/ListPlayerService';
 import '../styles/EditPlayer.css';

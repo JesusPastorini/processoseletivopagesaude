@@ -19,6 +19,9 @@ app.post('/registrationPlayer', checkRole(['admin']), playerController.cadastroP
 
 app.post('/contact', contactController.createContact);
 
+app.put('/players/:playerId', checkRole(['admin']), playerController.updatePlayer);
+app.delete('/players/:playerId', checkRole(['admin']), playerController.deletePlayer);
+
 app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     const player = await Player.findAll()
     res.send(player)

@@ -78,7 +78,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-info">
                     <h3>Informações de Contato</h3>
-                    <p>Email: contato@exemplo.com</p>
+                    <p>Email: juniorpastorini_@hotmail.com</p>
                     <p>Telefone: (123) 456-7890</p>
                     <p>Endereço: Rua Exemplo, 123, Cidade, País</p>
                 </div>
