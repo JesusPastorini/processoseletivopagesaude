@@ -1,10 +1,8 @@
-// src/services/playerService.js
 import axios from 'axios';
 
 const getAllPlayers = async () => {
     try {
         const response = await axios.get('http://localhost:3000/players');
-        console.log(response.data)
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data.message : 'Erro ao buscar jogadores';

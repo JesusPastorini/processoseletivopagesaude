@@ -7,7 +7,7 @@ const cadastroPlayer = async (req, res) => {
         return res.status(400).json({ message: 'Some required fields are missing' });
     }
     const existingPlayer = await Player.findOne({ where: { namePlayer } });
-    if (existingPlayer) return res.status(409).json({ message: 'Player already registered' });
+    if (existingPlayer) return res.status(409).json({ message: 'Jogador já esta registrado' });
 
     await Player.create({ namePlayer, note });
 
@@ -45,7 +45,7 @@ const deletePlayer = async (req, res) => {
         }
 
         await player.destroy();
-        return res.status(200).json({ message: 'Player deleted successfully' });
+        return res.status(200).json({ message: 'Jogador Deletado com Sucesso' });
     } catch (error) {
         return res.status(500).json({ message: 'Error deleting player', error: error.message });
     }

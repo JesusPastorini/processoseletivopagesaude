@@ -32,12 +32,15 @@ const createTeam = async (req, res) => {
         player.teamId = team.id;
         await player.save();
 
-        // Recalcula a média do time após adicionar um jogador
-        const totalNotes = team.players.reduce((acc, p) => acc + (p.note || 0), 0);
-        const average = totalNotes / team.players.length;
+        // Recalcula a média de todos os times, incluindo o time original e o novo time
+        const teams = await Team.findAll({ include: ['players'] });
 
-        team.average = average;
-        await team.save();
+        for (const team of teams) {
+            const totalNotes = team.players.reduce((acc, p) => acc + (p.note || 0), 0);
+            const average = Math.round(totalNotes / team.players.length);
+            team.average = average;
+            await team.save();
+        }
 
         res.json({ message: 'Jogador vinculado ao time com sucesso' });
     } catch (error) {
