@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
-const Team = require('./teams');
 
 const Player = sequelize.define('Player', {
     namePlayer: {
@@ -8,8 +7,12 @@ const Player = sequelize.define('Player', {
         allowNull: false,
         unique: true
     },
+    position: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     note: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
     }
 }, {

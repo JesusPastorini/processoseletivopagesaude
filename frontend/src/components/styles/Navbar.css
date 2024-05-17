@@ -1,0 +1,32 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+}
+
+.navbar-icon {
+    font-size: 3.5rem;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-menu li {
+    padding: 0.5rem 2rem;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.navbar-menu li a:hover {
+    color: #f0f0f0;
+}

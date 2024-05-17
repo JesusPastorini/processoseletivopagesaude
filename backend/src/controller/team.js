@@ -18,26 +18,36 @@ const teamPlayers = async (req, res) => {
 }
 
 const createTeam = async (req, res) => {
-    const teamsData = req.body; // Recebe a lista de times com seus jogadores
-
+    const { playerId } = req.params;
+    const { nameTeam, position } = req.body;
     try {
-        // Adiciona cada jogador aos times fixos
-        const createdPlayers = await Promise.all(teamsData.flatMap(async (teamData) => {
-            const { teamName, players } = teamData;
+        // Verifica se o time já existe, se não, cria um novo
+        let team = await Team.findOne({ where: { nameTeam }, include: ['players'] });
+        if (!team) {
+            team = await Team.create({ nameTeam, average: 0 });
+        }
 
-            // Adiciona cada jogador ao time
-            return Promise.all(players.map(async (playerName) => {
-                // Cria um novo jogador associado ao time
-                const player = await Player.create({ namePlayer: playerName, teamName: teamName });
-                return player;
-            }));
-        }));
+        const player = await Player.findByPk(playerId);
+        player.position = position;
+        player.teamId = team.id;
+        await player.save();
 
-        res.json(createdPlayers);
+        // Recalcula a média de todos os times, incluindo o time original e o novo time
+        const teams = await Team.findAll({ include: ['players'] });
+
+        for (const team of teams) {
+            const totalNotes = team.players.reduce((acc, p) => acc + (p.note || 0), 0);
+            const average = Math.round(totalNotes / team.players.length);
+            team.average = average;
+            await team.save();
+        }
+
+        res.json({ message: 'Jogador vinculado ao time com sucesso' });
     } catch (error) {
-        console.error('Erro ao adicionar times:', error);
+        console.error('Erro ao vincular jogador ao time:', error.message);
+        res.status(500).json({ error: 'Erro ao atualizar jogador' });
     }
-}
+};
 
 module.exports = {
     teamPlayers,

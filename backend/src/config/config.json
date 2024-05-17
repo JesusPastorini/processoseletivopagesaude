@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "jcpj19",
+    "database": "DB_PAGESAUDE",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

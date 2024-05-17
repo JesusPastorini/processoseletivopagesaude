@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { getLogin } from '../services/loginService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { GiSoccerBall } from "react-icons/gi";
+import { Link } from 'react-router-dom';
+import '../components/styles/Login.css';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isDisabled, setDisabled] = useState(true);
-
-    let navigate = useNavigate();
+    const [rememberMe, setRememberMe] = useState(false);
 
     const isValidEmail = (testEmail) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const validMail = emailRegex.test(testEmail);
-        return validMail;
+        return emailRegex.test(testEmail);
     };
 
     const isValidPassword = (testPassword) => {
@@ -25,67 +27,65 @@ function Login() {
         localStorage.setItem('user', JSON.stringify({
             email,
         }));
-        try {
-            const response = await axios.post('http://localhost:3000/', {
-                email,
-                password
-            });
-            // Se a solicitação for bem-sucedida, redirecione o usuário ou faça qualquer outra ação necessária
-            console.log('gogogogogogog')
-            navigate("/");
-        } catch (error) {
-            // Se ocorrer um erro, você pode exibir uma mensagem de erro para o usuário
-            console.error('Erro ao fazer login:', error);
+        await getLogin(email, password);
+        if (rememberMe) {
+            localStorage.setItem('authToken', sessionStorage.getItem('authToken'));
         }
     };
 
     return (
-        <main>
-            <div className="container__login">
-                <div className="form__login">
-                    <label htmlFor="email">
-                        <span>Login</span>
-                        <input
-                            value={email}
-                            name="email"
-                            type="email"
-                            autoComplete="off"
-                            placeholder="Insira seu email"
-                            data-testid="email-input"
-                            onChange={({ target }) => {
-                                const { value } = target;
-                                setEmail(value);
-                                setDisabled(!(isValidEmail(value) && isValidPassword(password)));
-                            }}
-                        />
-                    </label>
-                    <label htmlFor="password">
-                        <span>Password</span>
-                        <input
-                            value={password}
-                            name="password"
-                            type="password"
-                            placeholder="Insira sua senha"
-                            data-testid="password-input"
-                            minLength={6}
-                            onChange={({ target }) => {
-                                const { value } = target;
-                                setPassword(value);
-                                setDisabled(!(isValidEmail(email) && isValidPassword(value)));
-                            }}
-                        />
-                    </label>
-                    <button
-                        data-testid="login-submit-btn"
-                        type="button"
-                        onClick={handleClick}
-                        disabled={isDisabled}
-                    >
+        <div className="login-background">
+            <main className="login-container">
+                <div className="login-form">
+                    <GiSoccerBall className="login-icon" />
+                    <div className="login-inputs">
+                        <div className="input-wrapper">
+                            <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
+                            <input
+                                value={email}
+                                name="email"
+                                type="email"
+                                autoComplete="off"
+                                placeholder="E-mail"
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    setDisabled(!isValidEmail(e.target.value) || !isValidPassword(password));
+                                }}
+                            />
+                        </div>
+                        <div className="input-wrapper">
+                            <FontAwesomeIcon icon={faLock} className="input-icon" />
+                            <input
+                                value={password}
+                                name="password"
+                                type="password"
+                                placeholder="*********"
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setDisabled(!isValidEmail(email) || !isValidPassword(e.target.value));
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className="container-checkbox">
+                        <div className="checkbox">
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                            />
+                            <label htmlFor="rememberMe">Lembrar-me</label>
+                        </div>
+                        <div className="forgot-password">
+                            <Link to="/forgot-password">Esqueceu sua senha?</Link>
+                        </div>
+                    </div>
+                    <button className="btn-login" onClick={handleClick} disabled={isDisabled}>
                         Entrar
                     </button>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     );
 }
 

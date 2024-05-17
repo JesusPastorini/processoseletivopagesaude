@@ -1,4 +1,8 @@
 const { User } = require('../models')
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const secret = process.env.SECRET_TOKEN;
 
 const login = async (req, res) => {
     const { email, password } = req.body;
@@ -6,9 +10,12 @@ const login = async (req, res) => {
         return res.status(400).json({ message: 'Some required fields are missing' });
     }
     const getByUser = await User.findOne({ where: { email, password } });
-    if (!getByUser) return res.status(400).json({ message: 'Invalid fields' });
+    if (!getByUser) return res.status(401).json({ message: 'Usuário ou senha inválidos' });
 
-    return res.status(200).send('Usuario Logado');
+    // Gera um token JWT com o ID e a função do usuário
+    const token = jwt.sign({ id: getByUser.id, role: getByUser.role }, secret, { expiresIn: '24h' });
+
+    return res.status(200).send({ token });
 };
 
 const registerUser = async (req, res) => {

@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { User, Player, Team, sequelize } = require('./models');
-const { userController, playerController, teamController } = require('./controller')
-const { userPermission } = require('./middleware/userPermission')
+const { Player, sequelize } = require('./models');
+const { userController, playerController, teamController, contactController } = require('./controller')
+const { checkRole } = require('./middleware/validationJWT')
 
 const app = express();
 app.use(cors());
@@ -11,21 +11,18 @@ app.use(express.json());
 
 
 app.post('/', userController.login);
-app.get('/home', teamController.teamPlayers);
-app.put('/home/team', teamController.createTeam);
+app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
+app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
-app.post('/cadastroUser', userPermission, userController.registerUser);
-app.post('/cadastroJogador', playerController.cadastroPlayer);
+app.post('/registration', checkRole(['admin']), userController.registerUser);
+app.post('/registrationPlayer', checkRole(['admin']), playerController.cadastroPlayer);
 
-app.get('/TodosUsuarios', async (req, res) => {
-    const users = await User.findAll()
-    res.send(users)
-})
-app.get('/TodosTimes', async (req, res) => {
-    const teams = await Team.findAll()
-    res.send(teams)
-})
-app.get('/TodosJogadores', async (req, res) => {
+app.post('/contact', contactController.createContact);
+
+app.put('/players/:playerId', checkRole(['admin']), playerController.updatePlayer);
+app.delete('/players/:playerId', checkRole(['admin']), playerController.deletePlayer);
+
+app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     const player = await Player.findAll()
     res.send(player)
 })

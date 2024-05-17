@@ -1,0 +1,88 @@
+.login-background {
+    background-image: url('/estadio.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    background: rgb(228, 228, 236);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-icon {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 100px;
+}
+
+.login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    font-size: 23px;
+    left: 20px;
+
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 20px 70px 15px 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5%;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-password {
+    text-align: right;
+}
+
+.btn-login {
+    padding: 15px 150px;
+    margin-top: 5%;
+    border: none;
+    background: #2b962e;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #3f9451;
+    cursor: not-allowed;
+}

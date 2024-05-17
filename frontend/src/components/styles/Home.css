@@ -1,0 +1,25 @@
+.player-input {
+    text-align: center;
+    margin-top: 4%;
+}
+
+select {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.btn-home {
+    padding: 15px 50px;
+    margin-left: 4%;
+    border: none;
+    background: #606e58;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
