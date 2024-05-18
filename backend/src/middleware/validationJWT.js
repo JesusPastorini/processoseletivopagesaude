@@ -10,7 +10,7 @@ const checkRole = (allowedRoles) => {
             return res.status(401).json({ message: 'Autorização necessária' });
         }
 
-        const tokenParts = authHeader.split(' '); // Dividir para obter o token
+        const tokenParts = authHeader.split(' ');
         if (tokenParts.length !== 2 || tokenParts[0] !== 'Bearer') {
             return res.status(400).json({ message: 'Formato de token inválido' });
         }

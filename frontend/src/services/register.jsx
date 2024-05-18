@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { api } from './baseURL';
 
 const registerUser = async (username, email, password) => {
     try {
-        const response = await axios.post('http://localhost:3000/registration', {
+        const response = await api.post('/registration', {
             username,
             email,
             password,
@@ -14,7 +14,7 @@ const registerUser = async (username, email, password) => {
 };
 const registerPlayer = async (namePlayer, note) => {
     try {
-        const response = await axios.post('http://localhost:3000/registrationPlayer', {
+        const response = await api.post('/registrationPlayer', {
             namePlayer,
             note,
         });
