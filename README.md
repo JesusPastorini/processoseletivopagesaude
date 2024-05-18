@@ -35,10 +35,10 @@ Football Manager App é uma aplicação web para gerenciar jogadores e times de 
 
 [![Watch the video](path/to/video-thumbnail.png)](path/to/video.mp4)
 
-👤 Autor
-Jesus Cesar Pastorini Junior
-GitHub: https://github.com/JesusPastorini
-LinkedIn: https://www.linkedin.com/in/jesus-pastorini-75371286/
+👤 Autor: 
+- Jesus Cesar Pastorini Junior
+- GitHub: https://github.com/JesusPastorini
+- LinkedIn: https://www.linkedin.com/in/jesus-pastorini-75371286/
 
 📂 Estrutura do Projeto
 <details>
