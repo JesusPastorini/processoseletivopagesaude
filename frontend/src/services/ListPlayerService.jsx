@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { api } from './baseURL';
 
 const getAllPlayers = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/players');
+        const response = await api.get('/players');
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data.message : 'Erro ao buscar jogadores';
@@ -11,7 +11,7 @@ const getAllPlayers = async () => {
 
 const updatePlayer = async (playerId, playerData) => {
     try {
-        const response = await axios.put(`http://localhost:3000/players/${playerId}`, playerData);
+        const response = await api.put(`/players/${playerId}`, playerData);
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data.message : 'Erro ao atualizar jogador';
@@ -20,7 +20,7 @@ const updatePlayer = async (playerId, playerData) => {
 
 const deletePlayer = async (playerId) => {
     try {
-        const response = await axios.delete(`http://localhost:3000/players/${playerId}`);
+        const response = await api.delete(`/players/${playerId}`);
         return response.data;
     } catch (error) {
         throw error.response ? error.response.data.message : 'Erro ao deletar jogador';

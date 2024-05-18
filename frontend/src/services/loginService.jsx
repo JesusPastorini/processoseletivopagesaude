@@ -1,9 +1,8 @@
-import axios from 'axios';
+import { api } from './baseURL';
 
-const baseURL = 'http://localhost:3000/';
 const getLogin = async (email, password) => {
     try {
-        const response = await axios.post(baseURL, {
+        const response = await api.post('/', {
             email,
             password
         });
