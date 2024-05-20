@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const { Player, sequelize } = require('./models');
 const { userController, playerController, teamController, contactController } = require('./controller')
 const { checkRole } = require('./middleware/validationJWT')
@@ -30,11 +31,11 @@ app.post('/', (req, res) => {
     res.send('Hello, World!');
 });
 
-//sequelize.sync().then(() => {
-//    console.log('---------Conectado com o banco de dados--------');
-//});
+sequelize.sync().then(() => {
+    console.log('---------Conectado com o banco de dados--------');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`App Online na porta ${PORT}`);
-});;
+});

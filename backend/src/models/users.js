@@ -27,8 +27,8 @@ const User = sequelize.define('User', {
     tableName: 'user'
 });
 
-// Função para pré-popular a tabela user--uso apenas para teste
-/* async function prepopulateUserTable() {
+//Função para pré-popular a tabela user--uso apenas para teste
+async function prepopulateUserTable() {
     try {
 
         const count = await User.count();
@@ -47,5 +47,5 @@ const User = sequelize.define('User', {
 }
 
 prepopulateUserTable();
-*/
+
 module.exports = User;
