@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.post('/', userController.login);
+app.post('/hello', userController.login);
 app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
@@ -26,7 +26,7 @@ app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     res.send(player)
 })
 
-app.post('/hello', (req, res) => {
+app.post('/', (req, res) => {
     res.send('Hello, World!');
 });
 
