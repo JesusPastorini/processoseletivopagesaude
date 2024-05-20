@@ -28,9 +28,9 @@ const User = sequelize.define('User', {
 });
 
 // Função para pré-popular a tabela user--uso apenas para teste
-async function prepopulateUserTable() {
+/* async function prepopulateUserTable() {
     try {
-        // Verifica se a tabela está vazia
+
         const count = await User.count();
         if (count === 0) {
             await User.bulkCreate([
@@ -47,5 +47,5 @@ async function prepopulateUserTable() {
 }
 
 prepopulateUserTable();
-
+*/
 module.exports = User;

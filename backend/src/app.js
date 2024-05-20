@@ -9,7 +9,6 @@ app.use(cors());
 
 app.use(express.json());
 
-
 app.post('/', userController.login);
 app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
@@ -27,10 +26,15 @@ app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     res.send(player)
 })
 
-sequelize.sync().then(() => {
-    console.log('---------Conectado com o banco de dados--------');
+app.post('/hello', (req, res) => {
+    res.send('Hello, World!');
 });
 
-app.listen(3000, () => {
-    console.log('App Online')
-});
+//sequelize.sync().then(() => {
+//    console.log('---------Conectado com o banco de dados--------');
+//});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`App Online na porta ${PORT}`);
+});;
