@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const { Player, sequelize } = require('./models');
 const { userController, playerController, teamController, contactController } = require('./controller')
 const { checkRole } = require('./middleware/validationJWT')
@@ -9,8 +10,7 @@ app.use(cors());
 
 app.use(express.json());
 
-
-app.post('/', userController.login);
+app.post('/hello', userController.login);
 app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
@@ -27,10 +27,15 @@ app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     res.send(player)
 })
 
+app.post('/', (req, res) => {
+    res.send('Hello, World!');
+});
+
 sequelize.sync().then(() => {
     console.log('---------Conectado com o banco de dados--------');
 });
 
-app.listen(3000, () => {
-    console.log('App Online')
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`App Online na porta ${PORT}`);
 });
