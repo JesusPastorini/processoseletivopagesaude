@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.post('/hello', userController.login);
+app.post('/', userController.login);
 app.get('/home', checkRole(['user', 'admin']), teamController.teamPlayers);
 app.put('/team/:playerId', checkRole(['user', 'admin']), teamController.createTeam);
 
@@ -26,10 +26,6 @@ app.get('/players', checkRole(['user', 'admin']), async (req, res) => {
     const player = await Player.findAll()
     res.send(player)
 })
-
-app.post('/', (req, res) => {
-    res.send('Hello, World!');
-});
 
 sequelize.sync().then(() => {
     console.log('---------Conectado com o banco de dados--------');
