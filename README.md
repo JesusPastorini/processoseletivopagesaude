@@ -6,7 +6,7 @@
 
 Football Manager App é uma aplicação web para gerenciar jogadores e times de futebol. Com ela, você pode registrar novos jogadores, editar informações existentes, adicionar jogadores a times e muito mais. Tudo isso com uma interface intuitiva e fácil de usar.
 
-![App Screenshot](path/to/screenshot.png)
+![App Screenshot](/frontend/public/Home.jpeg)
 
 ## 🚀 Features
 
@@ -47,8 +47,9 @@ Football Manager App é uma aplicação web para gerenciar jogadores e times de 
 </details>
 
 🖼️ Imagens do Projeto
-Tela Principal
-
-Cadastro de Usuário
-
-Cadastro de Jogador
+Tela Login
+![login](/frontend/public/Login.jpeg)
+Cadastro
+![cadastro](/frontend/public/Cadastro.jpeg)
+Contato
+![contato](/frontend/public/Contato.jpeg)
